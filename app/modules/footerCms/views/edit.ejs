@@ -1,0 +1,112 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('user.dashboard') %>">CMS</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title"><%= page_title %></h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="footerCmsform" action="<%= generateUrl("footerCms.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+
+                                    
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="phone">Phone</label>
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="1234567890" value="<%= response.phone %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Number" value="<%= response.email %>">
+                                    </div>
+                                    <div class="col-12 col-sm-8 mb-1">
+                                        <label class="form-label" for="description">Description</label>
+                                        <div>
+                                            <textarea id="description" name="description" rows="4" cols="50"><%= response.description %></textarea>
+                                        </div>
+                                    </div>
+                                    <div><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-10 mb-1">
+                                        <label class="form-label" for="facebook_url">Facebook URL</label>
+                                        <input type="url" class="form-control" name="facebook_url" id="facebook_url" placeholder="Enter Facebook URL" value="<%= response.facebook_url %>">
+                                    </div>
+                                    <div class="col-12 col-sm-10 mb-1">
+                                        <label class="form-label" for="twitter_url">Twitter URL</label>
+                                        <input type="url" class="form-control" name="twitter_url" id="twitter_url" placeholder="Enter Twitter URL" value="<%= response.twitter_url %>">
+                                    </div>
+                                    <div class="col-12 col-sm-10 mb-1">
+                                        <label class="form-label" for="instagram_url">Instagram URL</label>
+                                        <input type="url" class="form-control" name="instagram_url" id="instagram_url" placeholder="Enter Instagram URL" value="<%= response.instagram_url %>">
+                                    </div>
+                                    <div class="col-12 col-sm-10 mb-1">
+                                        <label class="form-label" for="youtube_url">Youtube URL</label>
+                                        <input type="url" class="form-control" name="youtube_url" id="youtube_url" placeholder="Enter Youtube URL" value="<%= response.youtube_url %>">
+                                    </div>
+                                    <div><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-10 mb-1">
+                                        <label class="form-label" for="copyright">Copyright Text</label>
+                                        <input type="text" class="form-control" name="copyright" id="copyright" placeholder="Enter Copyright" value="<%= response.copyright %>">
+                                    </div>
+                                                                    
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    p.one {
+      border-style: solid;
+      border-color: #013465;
+    }
+
+</style>
+
+<script>
+    function preview1() {
+        frame1.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview2() {
+        frame2.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview3() {
+        frame3.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>

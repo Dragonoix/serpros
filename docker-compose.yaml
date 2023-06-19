@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  #React Nextjs Node Service
+
+  node:
+
+    image: webskittersdocker/node16:latest
+
+    container_name: serpros-node16
+
+    restart: unless-stopped
+
+    working_dir: /home/wtsadmin/myapp
+
+    environment:
+
+      - NODE_ENV=production
+
+    
+    volumes:
+
+      - ./:/home/wtsadmin/myapp
+
+    ports:
+
+      - "1597:1597"
+    command: >
+      sh -c "npm install  &&
+             npm start"
+
+
+#Docker Networks
+
+networks:
+  default:
+    external:
+      name: webskitters

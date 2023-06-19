@@ -1,0 +1,106 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('job.list') %>">job</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="addCategoryForm" action="<%= generateUrl("job.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<%= response.title %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="jobDate">job Date</label>
+                                        <input type="text" class="form-control datePickerSingle" name="jobDate" id="jobDate" placeholder="Date Of Publish" value="<%=response.jobDate ? moment(response.jobDate).format('MM/DD/YYYY') : "N/A"%>"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="jobCompletionType">job Completion Type</label>
+                                        <select name="jobCompletionType" id="jobCompletionType" class="form-control">
+                                            <option disabled selected>Choose The job Completion Type</option>
+                                            <option value="On Date" <%= response.jobCompletionType == "On Date" ? 'selected' : '' %>>On Date</option>
+                                            <option value="Before Date" <%= response.jobCompletionType == "Before Date" ? 'selected' : '' %>>Before Date</option>
+                                            <option value="Flexible" <%= response.jobCompletionType == "Flexible" ? 'selected' : '' %>>Flexible</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="typeOfjob">Type Of job</label>
+                                        <select name="typeOfjob" id="typeOfjob" class="form-control">
+                                            <option disabled selected>Choose The Type Of job</option>
+                                            <option value="Physical job" <%= response.typeOfjob == "Physical job" ? 'selected' : '' %>>Physical job</option>
+                                            <option value="Online job" <%= response.typeOfjob == "Online job" ? 'selected' : '' %>>Online job</option>
+                                        </select>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="budgetAmount">Budget Amount</label>
+                                        <input type="number" class="form-control" name="budgetAmount" id="budgetAmount" placeholder="Budget Amount" value="<%= response.budgetAmount %>">
+                                    </div>
+                                </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Update</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                    </div>
+                                <input type="hidden" name="id" value="<%= response._id %>">
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    
+    $(document).ready(() => {
+        $('.datePickerSingle').flatpickr({
+            // altInput: true,
+            // minDate: "today",
+            // altFormat: "F j, Y",
+            dateFormat: "m/d/Y",
+        });
+    })
+</script>

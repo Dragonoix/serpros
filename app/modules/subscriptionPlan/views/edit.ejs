@@ -1,0 +1,96 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('user.dashboard') %>">CMS</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title"><%= page_title %></h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="subscriptionPlanform" action="<%= generateUrl("subscriptionPlan.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+
+                                    
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="plan_name">Plan Name</label>
+                                        <input type="text" class="form-control" name="plan_name" id="plan_name" placeholder="Enter Plan Name" value="<%= response.plan_name %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="price_per_user">Price Per User</label>
+                                        <input type="number" class="form-control" name="price_per_user" id="price_per_user" placeholder="Enter Price Per User" value="<%= response.price_per_user %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="plan_duration">Plan Duration (*months)</label>
+                                        <input type="number" class="form-control" name="plan_duration" id="plan_duration" placeholder="Enter Plan Duration (*months)" value="<%= response.plan_duration %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="handling_fee">Handling Fee</label>
+                                        <input type="number" class="form-control" name="handling_fee" id="handling_fee" placeholder="Enter Handling Fee Charges" value="<%= response.handling_fee %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="team_size">Team Size</label>
+                                        <input type="number" class="form-control" name="team_size" id="team_size" placeholder="Enter Team Size" value="<%= response.team_size %>">
+                                    </div>
+
+                                            
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    p.one {
+      border-style: solid;
+      border-color: #013465;
+    }
+    
+
+</style>
+
+<script>
+    function preview1() {
+        frame1.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview2() {
+        frame2.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview3() {
+        frame3.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>

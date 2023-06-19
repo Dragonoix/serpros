@@ -1,0 +1,70 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('city.list') %>">City</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="addCityForm" action="<%= generateUrl("city.insert") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="cityName">City</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="cityName" id="cityName" placeholder="City" value="">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="region">Region</label><span style="color: red;"> *</span>
+                                        <select name="region" id="region" class="form-control">
+                                            <option disabled selected>Please Choose The Region</option>
+                                            <% allRegions.map(data => { %>
+                                                <option value="<%= data._id %>"><%= data.regionName %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Add</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("city.list") %>">Back</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>

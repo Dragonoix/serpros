@@ -1,0 +1,218 @@
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item me-auto">
+                <a class="navbar-brand" href="<%= generateUrl('user.dashboard') %>">
+                    <span >
+                        <img src="/images/serpros-logo.png" alt="logo" width="82%"/>
+                    </span>
+                    <!-- <h2 class="brand-text"><%= project_name %></h2> -->
+                    <!-- <h2 class="brand-text">UTA</h2> -->
+                </a>
+            </li>
+            <!-- <li class="nav-item nav-toggle">
+                <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
+                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+    <!-- <div class="shadow-bottom"></div> -->
+    <br><br>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class="<%=(page_name == 'user-dashboard') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('user.dashboard') %>">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span>
+                </a>
+            </li>
+            
+            <!-- Hide the developers section after admin colour scheme configuration before sending any update to the client -->
+            <!-- <li class=" navigation-header"><span data-i18n="Developers Section">Developers Section</span><i data-feather="more-horizontal"></i></li>
+            <li class="<%=(page_name == 'adminThemeColor-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('adminThemeColor.edit') %>">
+                    <i data-feather='aperture'></i>
+                    <span class="menu-title text-truncate" data-i18n="Theme Colors">Theme Colors</span>
+                </a>
+            </li> -->
+            <!-- Hide the developers section after admin colour scheme configuration before sending any update to the client -->
+
+            <!-- <li class=" navigation-header">
+                <span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
+            </li> -->
+            
+            <li class="<%=(page_name == 'user-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('admin.user.listing') %>">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate" data-i18n="User">User Management</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'cms-management') || (page_name == 'howItWorks-management') || (page_name == 'contactUsCms-management') || (page_name == 'footerCms-management')  ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center">
+                    <i data-feather='airplay'></i>
+                    <span class="menu-title text-truncate" data-i18n="Cms">CMS</span>
+                </a>
+                <ul class="menu-content">
+
+                    <li class="<%=(page_name == 'cms-management') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('admin.cms.list') %>">
+                            <i data-feather='arrow-right'></i>
+                            <span class="menu-title text-truncate" data-i18n="CMS">General</span>
+                        </a>
+                    </li>
+
+                    <li class="<%=(page_name == 'homePage-management') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('homePage.edit') %>">
+                            <i data-feather='arrow-right'></i>
+                            <span class="menu-title text-truncate" data-i18n="CMS">Home Page</span>
+                        </a>
+                    </li>
+
+                    <li class="<%=(page_name == 'howItWorks-management') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('howItWorks.edit') %>">
+                            <i data-feather='arrow-right'></i>
+                            <span class="menu-title text-truncate" data-i18n="CMS">How It Works</span>
+                        </a>
+                    </li>
+
+                    <li class="<%=(page_name == 'contactUsCms-management') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('contactUsCms.edit') %>">
+                            <i data-feather='arrow-right'></i>
+                            <span class="menu-title text-truncate" data-i18n="CMS">Contact Us</span>
+                        </a>
+                    </li>
+
+                    <li class="<%=(page_name == 'footerCms-management') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('footerCms.edit') %>">
+                            <i data-feather='arrow-right'></i>
+                            <span class="menu-title text-truncate" data-i18n="CMS">Footer</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="<%=(page_name == 'category-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('category-management.list') %>">
+                    <i data-feather='grid'></i>
+                    <span class="menu-title text-truncate" data-i18n="Category">Category</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'skill') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('skill.list') %>">
+                    <i data-feather='framer'></i>
+                    <span class="menu-title text-truncate" data-i18n="Category">Skills</span>
+                </a>
+            </li>
+            
+            <li class="<%=(page_name == 'job') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('job.list') %>">
+                    <i data-feather='tool'></i>
+                    <span class="menu-title text-truncate" data-i18n="jobs">Jobs</span>
+                </a>
+            </li>
+
+            <!-- <li class="<%=(page_name == 'review') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('review.list') %>">
+                    <i data-feather='star'></i>
+                    <span class="menu-title text-truncate" data-i18n="services">Review</span>
+                </a>
+            </li> -->
+
+            <li class="<%=(page_name == 'subscriptionPlan') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('subscriptionPlan.edit') %>">
+                    <i data-feather='tag'></i>
+                    <span class="menu-title text-truncate" data-i18n="services">Subscription Plan</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'transaction') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('transaction.list') %>">
+                    <i data-feather='dollar-sign'></i>
+                    <span class="menu-title text-truncate" data-i18n="services">Transactions</span>
+                </a>
+            </li>
+
+            
+            <li class="<%=(page_name == 'testimonial-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('testimonial.list') %>">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="Testimonials">Testimonials</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'region') || (page_name == 'city') || (page_name == 'suburb') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center">
+                    <i data-feather='cpu'></i>
+                    <span class="menu-title text-truncate" data-i18n="Location">Masters</span>
+                </a>
+                <ul class="menu-content">
+
+                    <li class="<%=(page_name == 'region') || (page_name == 'city') || (page_name == 'suburb') ? 'active' : ''%> nav-item">
+                        <a class="d-flex align-items-center">
+                            <i data-feather='map-pin'></i>
+                            <span class="menu-title text-truncate" data-i18n="Location">Location</span>
+                        </a>
+                        <ul class="menu-content">
+                            <li class="<%=(page_name == 'region') ? 'active' : ''%>">
+                                <a class="d-flex align-items-center" href="<%= generateUrl('region.list') %>">
+                                    <i data-feather="arrow-right"></i>
+                                    <span class="menu-item text-truncate" data-i18n="Region">Region</span>
+                                </a>
+                            </li>
+                            <li class="<%=(page_name == 'city') ? 'active' : ''%>">
+                                <a class="d-flex align-items-center" href="<%= generateUrl('city.list') %>">
+                                    <i data-feather="arrow-right"></i>
+                                    <span class="menu-item text-truncate" data-i18n="City">City</span>
+                                </a>
+                            </li>
+                            <li class="<%=(page_name == 'suburb') ? 'active' : ''%>">
+                                <a class="d-flex align-items-center" href="<%= generateUrl('suburb.list') %>">
+                                    <i data-feather="arrow-right"></i>
+                                    <span class="menu-item text-truncate" data-i18n="Suburb">Suburb</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="<%=(page_name == 'priceFilterMaster') ? 'active' : ''%>">
+                        <a class="d-flex align-items-center" href="<%= generateUrl('priceFilterMaster.list') %>">
+                            <i data-feather="arrow-right"></i>
+                            <span class="menu-item text-truncate" data-i18n="City">Price Filter</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            
+
+            <li class="<%=(page_name == 'faq-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('faq-management.list') %>">
+                    <i data-feather='help-circle'></i>
+                    <span class="menu-title text-truncate" data-i18n="FAQ">FAQ</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'contact-us') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('contact-us.list') %>">
+                    <i data-feather='phone-call'></i>
+                    <span class="menu-title text-truncate" data-i18n="Contact Us">Contact Us</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'settings-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="<%= generateUrl('settings.edit') %>">
+                    <i data-feather='pocket'></i>
+                    <span class="menu-title text-truncate" data-i18n="Settings">Charges & Tax</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

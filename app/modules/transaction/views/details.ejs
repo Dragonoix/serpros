@@ -1,0 +1,92 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('transaction.list') %>">Transaction</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="trans_date">Transaction Date/Time</label>
+                                        <input type="datetime" class="form-control"  readonly value = "<%= moment(response.trans_date).format('MMMM Do YYYY (h:mm:ss a)') %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="trans_id">Transaction Id</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.stripe_transactionId %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="payer">Payer</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.payer ? response.payer.full_name : 'N/A' %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="payee">Payee</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.payee ? response.payee.full_name : 'N/A' %>">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="serviceId">Service</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.service?.title ? response.service?.title : 'N/A' %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="paymentStatus">Payment Status</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.paymentStatus ? response.paymentStatus : 'N/A' %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="paymentStatus">Amount</label>
+                                        <input type="text" class="form-control"  readonly value = "$ <%= response.amount ? response.amount : 'N/A' %>">
+                                    </div>
+                                    <div class="col-12 col-sm-12 mb-1">
+                                        <label class="form-label" for="description">Description</label>
+                                        <textarea class="form-control"  readonly > <%= response.description %> </textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>

@@ -1,0 +1,22 @@
+1. admin creds:
+admin@admin.com
+12345678
+
+2. use your own database configuration
+
+3. datatable files can be found under: public/js/datatables
+
+4. form validation can be found under: public/form-controls
+
+5. Common js file: public/js/common.js
+
+6. Quill Editor configuration file: public/js/quill-editor.js
+
+7. Particular Page related client side js files can be found under: public/js/pages
+
+8. For APIDOC please use swagger by configuring in: app/helper/swagger.js
+
+
+** Refrain from editting / changing the basic structure.
+** We have used Jquery datatable for the datatables instead of metronic KTdatatable.
+** Find all the changes for the datatables in controller, repository, list.ejs and particular client side datatable file mentioned on the list.ejs file respectively.

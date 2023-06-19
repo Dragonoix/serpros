@@ -1,0 +1,140 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('review.list') %>">Review</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="trans_date">Review Date/Time</label>
+                                        <input type="datetime" class="form-control"  readonly value = "<%= moment(response.review_date).format('MMMM Do YYYY (h:mm:ss a)') %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="trans_id">Overall Rating</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= overallRating %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="payer">Review For</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.reviewFor.full_name %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="payee">Review By</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.reviewBy.full_name %>">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="serviceId">Service</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.job.title %>">
+                                    </div>
+                                    <!-- <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="paymentStatus">Payment Status</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.paymentStatus %>">
+                                    </div> -->
+                                </div>
+
+                                <div><b class="section">Workmanship</b><p class="one"></p></div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Rating</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.workmanship.rating %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Review</label>
+                                        <textarea class="form-control"  readonly><%= response.workmanship.review_text %></textarea>
+                                    </div>
+                                </div>
+
+                                <div><b class="section">Cost</b><p class="one"></p></div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Rating</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.cost.rating %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Review</label>
+                                        <textarea class="form-control"  readonly><%= response.cost.review_text %></textarea>
+                                    </div>
+                                </div>
+
+                                <div><b class="section">Schedule</b><p class="one"></p></div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Rating</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.schedule.rating %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Review</label>
+                                        <textarea class="form-control"  readonly><%= response.schedule.review_text %></textarea>
+                                    </div>
+                                </div>
+
+                                <div><b class="section">Communication</b><p class="one"></p></div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Rating</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.communication.rating %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="">Review</label>
+                                        <textarea class="form-control"  readonly><%= response.communication.review_text %></textarea>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+
+    p.one {
+      border-top-style: solid;
+      border-color: #013465;
+    }
+    b.section {
+        font-size: 20px;
+    }
+</style>

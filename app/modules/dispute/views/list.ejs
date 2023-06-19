@@ -1,0 +1,94 @@
+<% layout(layout_directory+'/mainLayout') -%>
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="app-user-list">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(data.count) %></h3>
+                                    <span>Total Review</span>
+                                </div>
+                                <div class="avatar bg-light-primary p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="star" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(data.activecount) %></h3>
+                                    <span>Active Review</span>
+                                </div>
+                                <div class="avatar bg-light-success p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="star" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(data.inactivecount) %></h3>
+                                    <span>Inactive Review</span>
+                                </div>
+                                <div class="avatar bg-light-danger p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="star" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- list and filter start -->
+                <div class="card">
+                    <div class="card-body border-bottom">
+                        <h4 class="card-title"><%= page_title %></h4>
+                    </div>
+                    <div class="card-datatable table-responsive pt-0">
+                        <table class="user-list-table table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th></th>
+                                    <th>Review For</th>
+                                    <th>Review By</th>
+                                    <th>Overall Rating</th>
+                                    <th>Review Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<!-- BEGIN: Datatable JS-->
+<script src="/js/datatables/app-review-list.js"></script>
+<!-- END: Datatable JS-->

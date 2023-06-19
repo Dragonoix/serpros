@@ -1,0 +1,296 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('user.dashboard') %>">CMS</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title"><%= page_title %></h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="homePageform" action="<%= generateUrl("homePage.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+
+                                    <div><b class="section">Section One</b><p class="one"></p></div>
+
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="heading">Heading</label>
+                                        <input type="text" class="form-control" name="heading" id="heading" placeholder="Heading" value="<%= response.heading %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sub_heading">Sub Heading</label>
+                                        <div>
+                                            <textarea id="sub_heading" name="sub_heading" rows="4" cols="65"><%= response.sub_heading %></textarea>
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.banner){ %>
+                                                <% response.banner.map(pic=>{ %>
+                                                <img src="/uploads/homePage/<%= pic %>"
+                                                id="frame1" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% }) %>
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame1" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="banner" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Image</label>
+                                        <input type="file" name="banner" id="banner" multiple="multiple" onchange="preview1()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Banner Image.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+                                    
+
+                                </div>
+                                <div class="row">
+                                    <div><b class="section">Section Two</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_heading">Heading</label>
+                                        <input type="text" class="form-control" name="sec1_heading" id="sec1_heading" placeholder="Heading" value="<%= response.sec1_heading %>">
+                                    </div>
+                                                                      
+                                    
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.sec1_banner){ %>
+                                                <img src="/uploads/homePage/<%= response.sec1_banner %>"
+                                                id="frame2" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame2" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="sec1_banner" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Image</label>
+                                        <input type="file" name="sec1_banner" id="sec1_banner" onchange="preview2()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Banner Image.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_header1">Header 1</label>
+                                        <input type="text" class="form-control" name="sec1_header1" id="sec1_header1" placeholder="Header 1" value="<%= response.sec1_header1 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_description1">Description 1</label>
+                                        <div>
+                                            <textarea id="sec1_description1" name="sec1_description1" rows="4" cols="65"><%= response.sec1_description1 %></textarea>
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.sec1_icon1){ %>
+                                                <img class="svgIcon" src="/uploads/homePage/<%= response.sec1_icon1 %>"
+                                                id="frame3" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame3" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="sec1_icon1" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Icon</label>
+                                        <input type="file" name="sec1_icon1" id="sec1_icon1" onchange="preview3()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon 1 Image.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_header2">Header 2</label>
+                                        <input type="text" class="form-control" name="sec1_header2" id="sec1_header2" placeholder="Header 1" value="<%= response.sec1_header2 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_description2">Description 2</label>
+                                        <div>
+                                            <textarea id="sec1_description2" name="sec1_description2" rows="4" cols="65"><%= response.sec1_description2 %></textarea>
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.sec1_icon2){ %>
+                                                <img class="svgIcon" src="/uploads/homePage/<%= response.sec1_icon2 %>"
+                                                id="frame4" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame4" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="sec1_icon2" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Icon</label>
+                                        <input type="file" name="sec1_icon2" id="sec1_icon2" onchange="preview4()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon 2 Image.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_header3">Header 3</label>
+                                        <input type="text" class="form-control" name="sec1_header3" id="sec1_header3" placeholder="Header 1" value="<%= response.sec1_header3 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_description3">Description 3</label>
+                                        <div>
+                                            <textarea id="sec1_description3" name="sec1_description3" rows="4" cols="65"><%= response.sec1_description3 %></textarea>
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.sec1_icon3){ %>
+                                                <img class="svgIcon" src="/uploads/homePage/<%= response.sec1_icon3 %>"
+                                                id="frame5" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame5" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="sec1_icon3" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Icon</label>
+                                        <input type="file" name="sec1_icon3" id="sec1_icon3" onchange="preview5()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon 3 Image.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div><b class="section">Section Three</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_heading">Heading</label>
+                                        <input type="text" class="form-control" name="sec2_heading" id="sec2_heading" placeholder="Heading" value="<%= response.sec2_heading %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sub_heading">Sub Heading</label>
+                                        <div>
+                                            <textarea id="sec2_sub_heading" name="sec2_sub_heading" rows="4" cols="65"><%= response.sec2_sub_heading %></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div><b class="section">Section Four</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_heading">Heading</label>
+                                        <input type="text" class="form-control" name="sec3_heading" id="sec3_heading" placeholder="Heading" value="<%= response.sec3_heading %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sub_heading">Sub Heading</label>
+                                        <div>
+                                            <textarea id="sec3_sub_heading" name="sec3_sub_heading" rows="4" cols="65"><%= response.sec3_sub_heading %></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div><b class="section">Section Five</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sec1_heading">Heading</label>
+                                        <input type="text" class="form-control" name="sec4_heading" id="sec4_heading" placeholder="Heading" value="<%= response.sec4_heading %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sub_heading">Sub Heading</label>
+                                        <div>
+                                            <textarea id="sec4_sub_heading" name="sec4_sub_heading" rows="4" cols="65"><%= response.sec4_sub_heading %></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                                              
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1" onclick="refreshPage()">Discard</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    p.one {
+      border-style: solid;
+      border-color: #013465;
+    }
+    b.section {
+        font-size: 20px;
+    }
+    .svgIcon {
+        background-color: rgb(167, 167, 167);
+    }
+
+</style>
+
+<script>
+    function preview1() {
+        frame1.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview2() {
+        frame2.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview3() {
+        frame3.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview4() {
+        frame4.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview5() {
+        frame5.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function refreshPage() {
+        // alert("hello")
+        window.location.reload();
+    }
+</script>

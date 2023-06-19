@@ -1,0 +1,207 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('user.dashboard') %>">CMS</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title"><%= page_title %></h4>
+                        </div>
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="howItWorksform" action="<%= generateUrl("contactUsCms.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="header">Header</label>
+                                        <input type="text" class="form-control" name="header" id="header" placeholder="Header" value="<%= response.header %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="sub_header">Sub Header</label>
+                                        <input type="text" class="form-control" name="sub_header" id="sub_header" placeholder="Sub Header" value="<%= response.sub_header %>">
+                                    </div>
+
+                                    <div><b class="section">Card One</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="heading1">Heading</label>
+                                        <input type="text" class="form-control" name="heading1" id="heading1" placeholder="Heading1" value="<%= response.heading1 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="description1">Description</label>
+                                        <div>
+                                            <textarea id="description1" name="description1" rows="4" cols="64"><%= response.description1 %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_text1">Button Text</label>
+                                        <input type="text" class="form-control" name="btn_text1" id="btn_text1" placeholder="Button Text" value="<%= response.btn_text1 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_url1">Button URL</label>
+                                        <input type="url" class="form-control" name="btn_url1" id="btn_url1" placeholder="Button URL" value="<%= response.btn_url1 %>">
+                                    </div>
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.icon1){ %>
+                                                <img src="/uploads/contactUsCms/<%= response.icon1 %>"
+                                                id="frame1" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame1" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="icon1" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Image</label>
+                                        <input type="file" name="icon1" id="icon1" onchange="preview1()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+                                    <div><b class="section">Card Two</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="heading2">Heading</label>
+                                        <input type="text" class="form-control" name="heading2" id="heading2" placeholder="Heading2" value="<%= response.heading2 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="description2">Description</label>
+                                        <div>
+                                            <textarea id="description2" name="description2" rows="4" cols="64"><%= response.description2 %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_text2">Button Text</label>
+                                        <input type="text" class="form-control" name="btn_text2" id="btn_text2" placeholder="Button Text" value="<%= response.btn_text2 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_url2">Button URL</label>
+                                        <input type="url" class="form-control" name="btn_url2" id="btn_url2" placeholder="Button URL" value="<%= response.btn_url2 %>">
+                                    </div>
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.icon2){ %>
+                                                <img src="/uploads/contactUsCms/<%= response.icon2 %>"
+                                                id="frame2" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame2" class="rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="icon2" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Image</label>
+                                        <input type="file" name="icon2" id="icon2" onchange="preview2()" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+                                    <div><b class="section">Card Three</b><p class="one"></p></div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="heading3">Heading</label>
+                                        <input type="text" class="form-control" name="heading3" id="heading3" placeholder="Heading3" value="<%= response.heading3 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="description3">Description</label>
+                                        <div>
+                                            <textarea id="description3" name="description3" rows="4" cols="64"><%= response.description3 %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_text3">Button Text</label>
+                                        <input type="text" class="form-control" name="btn_text3" id="btn_text3" placeholder="Button Text" value="<%= response.btn_text3 %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="btn_url3">Button URL</label>
+                                        <input type="url" class="form-control" name="btn_url3" id="btn_url3" placeholder="Button URL" value="<%= response.btn_url3 %>">
+                                    </div>
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->                                       
+                                        <a class="me-25">
+                                            <% if(response.icon3){ %>
+                                                <img src="/uploads/contactUsCms/<%= response.icon3 %>"
+                                                id="frame3" class=" rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                                <% } else {%>
+                                                    <img src="/uploads/noImage.png" id="frame3" class=" rounded me-50"
+                                                        style="max-width: 100px; max-height: 100px;" />
+                                                    <% } %>
+                                        </a>
+                                        <label for="icon3" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Image</label>
+                                        <input type="file" name="icon3" id="icon3" onchange="preview3()" hidden accept="image/*" />
+                                        <!-- <input type="file" onchange="preview()"> -->
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload Icon</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+
+                                    
+                                </div>
+
+                                
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
+                                        <a href="" class="btn btn-outline-secondary mt-1">Discard</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    p.one {
+      border-style: solid;
+      border-color: #013465;
+    }
+
+    b.section {
+        font-size: 20px;
+    }
+
+</style>
+
+<script>
+    function preview1() {
+        frame1.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview2() {
+        frame2.src=URL.createObjectURL(event.target.files[0]);
+    }
+    function preview3() {
+        frame3.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>

@@ -1,0 +1,85 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('faq-management.list') %>">FAQ</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="editFaqForm" action="<%= generateUrl("faq-management.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 mb-1">
+                                        <label class="form-label" for="question">Question</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="question" id="question" placeholder="Question" value="<%= response.question %>">
+                                    </div>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label class="form-label" for="answer">Answer</label><span style="color: red;"> *</span>
+                                    <div id="answerEditor" data-targetid="answer" class="editor"><%- response.answer ? response.answer : '' %></div>
+                                    <textarea class="dt-answer" id="answer" hidden name="answer" rows="3"><%- response.answer ? response.answer : '' %></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Update</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("faq-management.list") %>">Back</a>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="<%= response._id %>">
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+    
+</style>
+
+<script>
+    
+    $(document).ready(() => {
+
+        $("#answerEditor").on('keyup', function() {
+     var res = $('#answerEditor').text();
+     if(res.length === 0) 
+     $('#answer').val('')
+   });
+    })
+
+
+</script>

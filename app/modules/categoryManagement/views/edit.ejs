@@ -1,0 +1,146 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('category-management.list') %>">Category</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="editCategoryForm" action="<%= generateUrl("category-management.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="parentCategory">First Parent Category</label>
+                                        <select name="parentCategory" id="parentCategory" class="form-control">
+                                            <option value="" disabled selected>Select</option>
+                                            <% if(!_.isEmpty(allCategories)){ allCategories.map(data => { %>
+                                                <option value="<%= data._id %>" <%= response.parentCategory ?  (data._id.toString() === category_1.toString() ? 'selected': '') : '' %>><%= data.categoryName %></option>
+                                            <% }) } %>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="parentCategory2">Second Parent Category</label>
+                                        <select name="parentCategory2" id="parentCategory2" class="form-control">
+                                            <option value="" disabled selected>Select</option>
+                                            <% if(!_.isEmpty(allSubCategories)){ allSubCategories.map(data2 => { %>
+                                                <option value="<%= data2._id %>" <%= response.parentCategory ?  (data2._id.toString() === response.parentCategory.toString() ? 'selected': '') : '' %>><%= data2.categoryName %></option>
+                                            <% }) } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-4 mb-1">
+                                        <label class="form-label" for="categoryName">Category Name</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" value="<%= response.categoryName %>">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 mb-1" style="height: 100%;">
+                                      <label class="form-label" for="description">Description</label>
+                                        <div id="contentDivCMS" data-targetid="description" class="editor">
+                                          <%-response.description %>
+                                        </div>
+                                        <textarea class="dt-content" id="description" name="description" hidden
+                                            rows="3"></textarea>
+                                    </div>
+                                  </div>
+                                
+                                <div class="mb-1">
+                                    <!-- upload and reset button -->                                       
+                                    <a class="me-25">
+                                        <% if(response.icon){ %>
+                                            <img src="/uploads/category-management/<%= response.icon %>"
+                                            id="frame1" class="rounded me-50"
+                                            style="max-width: 100px; max-height: 100px;" />
+                                            <% } else {%>
+                                                <img src="/uploads/noImage.png" id="frame1" class="rounded me-50"
+                                                    style="max-width: 100px; max-height: 100px;" />
+                                                <% } %>
+                                    </a>
+                                    <label for="icon" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Icon</label>
+                                    <input type="file" name="icon" id="icon" onchange="preview1()" hidden accept="image/*" />
+                                    <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                    <p class="mb-0">Upload Icon</p>
+                                    <!--/ upload and reset button -->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                      <!-- upload and reset button -->
+                                      <a class="me-25">
+                                        <% if(response.banner){ %>
+                                            <img src="/uploads/category-management/<%= response.banner %>" id="frame2" class="rounded me-50"
+                                                style="max-width: 100px; max-height: 100px;" />
+                                        <% } else { %>
+                                            <img src="/uploads/noImage.png" id="frame2" class="rounded me-50"
+                                            style="max-width: 100px; max-height: 100px;" />
+                                        <% } %>
+                                        
+                                      </a>
+                                      <label for="banner" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Banner</label>
+                                      <input type="file" name="banner" id="banner" onchange="preview2()" hidden accept="image/*" />
+                                      <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                      <p class="mb-0">Upload Banner</p>
+                                      <!--/ upload and reset button -->
+                                    </div>
+                                  </div>
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="hidden" name="id" value="<%= response._id %>">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Update</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("category-management.list") %>">Back</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>
+
+<script>
+    function preview1() {
+            frame1.src=URL.createObjectURL(event.target.files[0]);
+        }
+
+        function preview2() {
+            frame2.src=URL.createObjectURL(event.target.files[0]);
+        }
+</script>

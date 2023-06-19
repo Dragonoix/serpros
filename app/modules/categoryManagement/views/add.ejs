@@ -1,0 +1,233 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper container-xxl p-0">
+    <div class="content-header row">
+      <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="col-12">
+            <!-- <h2 class="content-header-title mb-0"><%= page_title %></h2> -->
+            <h2><%= page_title %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+            <div class="card-body py-2">
+              <!-- form -->
+              <form class="validate-form" id="addCategoryForm" action="<%= generateUrl("category-management.insert") %>" method="POST" enctype='multipart/form-data'>
+
+
+                <div class="row mb-1">
+                  <div class="col-12 col-sm-6 mb-1">
+                    <label class="form-label" for="categoryName">Category Name </label> <span style="color: red;"> *</span>
+                    <input type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" value="">
+                  </div>
+                </div>
+
+                <div class="mb-1">
+                  <input type="checkbox" id="check">
+                  <label for="check"> Will it be under Level 1 category ?</label>
+                </div>
+
+                <div class="col-12 col-sm-6" id="parentCatDiv" hidden>
+                  <div class="mb-1">
+                    <label class="form-label" for="parentCategory">Select Level 1 Category</label>
+                    <select name="parentCategory" id="parentCategory" class="form-control">
+                      <option disabled selected>Select Level 1 Category</option>
+                      <% allCategories.map(data => { %>
+                      <option value="<%= data._id %>"><%= data.categoryName %></option>
+                      <% }) %>
+                    </select>
+                  </div>
+                  <div class="mb-1">
+                    <input type="checkbox" id="childCheck">
+                    <label for="childCheck"> Will it be under Level 2 category ?</label>
+                  </div>
+
+                  <div class="mb-1" id="childCatDiv" hidden>
+                    <label class="form-label" for="subCategory">Select Level 2 Category</label>
+                    <select name="subCategory" id="subCategory" class="form-control">
+                      <option disabled selected>Select Level 2 Category</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-1" id="level3div" hidden>
+                    <input type="checkbox" id="childCheck2">
+                    <label for="childCheck"> Will it be under Level 3 category ?</label>
+                  </div>
+
+                  <div class="mb-1" id="childCatDiv3" hidden>
+                    <label class="form-label" for="subCategory3">Select Level 3 Category</label>
+                    <select name="subCategory3" id="subCategory3" class="form-control">
+                      <option disabled selected>Select Level 3 Category</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-12 col-sm-12 mb-1" style="height: 100%;">
+                    <label class="form-label" for="description">Description</label>
+                    <div id="contentDivCMS" data-targetid="description" class="editor">
+
+                    </div>
+                    <textarea class="dt-content" id="description" name="description" hidden rows="3"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-12 col-sm-6 mb-1">
+                    <!-- upload and reset button -->
+                    <a class="me-25">
+                      <img src="/uploads/noImage.png" id="frame1" class="rounded me-50" style="max-width: 100px; max-height: 100px;" />
+                    </a>
+                    <label for="icon" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Icon</label>
+                    <input type="file" name="icon" id="icon" onchange="preview1()" hidden accept="image/*" />
+                    <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                    <p class="mb-0">Upload Icon</p>
+                    <!--/ upload and reset button -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-sm-6 mb-1">
+                    <!-- upload and reset button -->
+                    <a class="me-25">
+                      <img src="/uploads/noImage.png" id="frame2" class="rounded me-50" style="max-width: 100px; max-height: 100px;" />
+                    </a>
+                    <label for="banner" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Banner</label>
+                    <input type="file" name="banner" id="banner" onchange="preview2()" hidden accept="image/*" />
+                    <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                    <p class="mb-0">Upload Banner</p>
+                    <!--/ upload and reset button -->
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary mt-1 me-1">Add</button>
+                    <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                    <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("category-management.list") %>">Back</a>
+                  </div>
+                </div>
+              </form>
+              <!--/ form -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .ql-editor {
+    height: 150px;
+  }
+</style>
+
+<script>
+  function preview1() {
+    frame1.src = URL.createObjectURL(event.target.files[0]);
+  }
+
+  function preview2() {
+    frame2.src = URL.createObjectURL(event.target.files[0]);
+  }
+
+  $("#check").on('change', function() {
+    if ($("#check").is(':checked') == true) {
+      $("#parentCatDiv").removeAttr('hidden');
+    } else {
+      $("#parentCatDiv").attr("hidden", true);
+    }
+
+  });
+
+  $("#childCheck").on('change', function() {
+    if ($("#childCheck").is(':checked') == true) {
+      $("#childCatDiv").removeAttr('hidden');
+      $("#level3div").removeAttr('hidden');
+    } else {
+      $("#childCatDiv").attr("hidden", true);
+      $("#level3div").attr("hidden", true);
+      $("#childCatDiv3").attr("hidden", true);
+      $("#childCheck2").prop("checked", false);
+      $('#subCategory').prop('selectedIndex', 0);
+      $('#subCategory3').prop('selectedIndex', 0);
+    }
+
+  });
+
+  $("#childCheck2").on('change', function() {
+    if ($("#childCheck2").is(':checked') == true) {
+      $("#childCatDiv3").removeAttr('hidden');
+    } else {
+      $("#childCatDiv3").attr("hidden", true);
+      $('#subCategory3').prop('selectedIndex', 0);
+    }
+
+  });
+
+
+  $("#parentCategory").on('change', function() {
+
+    $('#subCategory').find('option').remove()
+    $.ajax({
+      type: "GET",
+      url: `${window.location.protocol}//${window.location.host}/api/category/sub-cat/` + $(this).val(),
+      success: function(result) {
+        $('#subCategory').append($("<option disabled selected> Select Level 2 Category </option>"));
+        if (result.data.length > 0) {
+          $.each(result.data, function(key, value) {
+
+            $('#subCategory')
+              .append($("<option></option>")
+                .attr("value", result.data[key]._id)
+                .text(result.data[key].categoryName));
+          });
+        }
+      },
+      error: function(xhr, status, error) {
+        // console.log("HEREEEEEEEEEEEE");
+        alert(error.message);
+      }
+    });
+  });
+
+  $("#subCategory").on('change', function() {
+
+    $('#subCategory3').find('option').remove()
+    $.ajax({
+      type: "GET",
+      url: `${window.location.protocol}//${window.location.host}/api/category/sub-cat/` + $(this).val(),
+      success: function(result) {
+        $('#subCategory3').append($("<option disabled selected> Select Level 2 Category </option>"));
+        if (result.data.length > 0) {
+          $.each(result.data, function(key, value) {
+
+            $('#subCategory3')
+              .append($("<option></option>")
+                .attr("value", result.data[key]._id)
+                .text(result.data[key].categoryName));
+          });
+        }
+      },
+      error: function(xhr, status, error) {
+        // console.log("HEREEEEEEEEEEEE");
+        alert(error.message);
+      }
+    });
+  })
+</script>

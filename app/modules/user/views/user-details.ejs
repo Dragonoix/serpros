@@ -1,0 +1,88 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('admin.user.listing') %>">User</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="full_name">Full Name</label>
+                                        <input type="text" class="form-control" name="full_name" id="full_name" readonly value = "<%= response.full_name %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" readonly value = "<%= response.email %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-4 mb-1">
+                                        <label class="form-label" for="user_type">User Type</label>
+                                        <input type="text" class="form-control" name="user_type" id="user_type" readonly value = "<%= response.user_type %>">
+                                    </div>
+                                    <div class="col-12 col-sm-4 mb-1">
+                                        <label class="form-label" for="cityName">City</label>
+                                        <input type="text" class="form-control" name="cityName" id="cityName" readonly value = "<%= response.cityName %>">
+                                    </div>
+                                    <div class="col-12 col-sm-4 mb-1">
+                                        <label class="form-label" for="countryName">Country</label>
+                                        <input type="text" class="form-control" name="countryName" id="countryName" readonly value = "<%= response.countryName %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="stateName">State</label>
+                                        <input type="text" class="form-control" name="stateName" id="stateName" readonly value = "<%= response.stateName %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="zipCode">ZIP</label>
+                                        <input type="text" class="form-control" name="zipCode" id="zipCode" readonly value = "<%= response.zipCode %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("admin.user.listing") %>">Back</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>

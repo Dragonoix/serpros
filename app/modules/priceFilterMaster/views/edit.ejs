@@ -1,0 +1,79 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-priceFilterMaster mb-0"><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('priceFilterMaster.list') %>">priceFilterMaster</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-priceFilterMaster"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="priceFilterMasterForm" action="<%= generateUrl("priceFilterMaster.update") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="greater_than">Greater Than</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="greater_than" id="greater_than" placeholder="Greater Than" value="<%= response.greater_than %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                      <label class="form-label" for="less_than">Less Than</label><span style="color: red;"> *</span>
+                                      <input type="text" class="form-control" name="less_than" id="less_than" placeholder="Less Than" value="<%= response.less_than %>">
+                                  </div>
+                                </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Update</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("priceFilterMaster.list") %>">Back</a>
+                                    </div>
+                                <input type="hidden" name="id" value="<%= response._id %>">
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    
+    $(document).ready(() => {
+        $('.datePickerSingle').flatpickr({
+            // altInput: true,
+            // minDate: "today",
+            // altFormat: "F j, Y",
+            dateFormat: "m/d/Y",
+        });
+    })
+</script>

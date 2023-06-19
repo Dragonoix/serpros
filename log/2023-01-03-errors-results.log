@@ -1,0 +1,4 @@
+2023-01-03 13:15:05 error: 400 - Unexpected token } in JSON at position 25 - /api/category/servicer - POST - ::ffff:127.0.0.1
+2023-01-03 13:43:14 error: 400 - Unexpected token } in JSON at position 24 - /api/category/servicer - POST - ::ffff:127.0.0.1
+2023-01-03 15:13:34 error: 400 - Unexpected end of JSON input - /api/category/servicer - POST - ::ffff:127.0.0.1
+2023-01-03 17:50:10 error: 400 - Unexpected token } in JSON at position 281 - /api/category/servicer - POST - ::ffff:127.0.0.1

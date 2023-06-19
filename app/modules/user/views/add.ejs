@@ -1,0 +1,96 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <!-- <h2 class="content-header-title mb-0"><%= page_title %></h2> -->
+                        <h2><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('admin.user.listing') %>">user</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form class="validate-form" id="userForm" action="<%= generateUrl("user.insert") %>" method="POST" enctype='multipart/form-data'>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="full_name">Full Name</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Enter full name" value="">
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="email">Email</label><span style="color: red;"> *</span>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter email address" value="">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4 mb-1">
+                                            <label class="form-label" for="user-type">User Type</label>
+                                            <select id="user_type" name="user_type" class="form-select text-capitalize mb-md-0 mb-2xx cursor-pointer" required>
+                                                <!-- <option selected > Select a type </option> -->
+                                                <!-- <option  value="client"> Client </option> -->
+                                                <option  selected value="service_provider"> Service Provider </option>                                  
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4 mb-1">
+                                            <label class="form-label" for="cityName">City</label>
+                                            <input type="text" class="form-control" name="cityName" id="cityName" value = "">
+                                        </div>
+                                        <div class="col-12 col-sm-4 mb-1">
+                                            <label class="form-label" for="countryName">Country</label>
+                                            <input type="text" class="form-control" name="countryName" id="countryName" value = "">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6 mb-1">
+                                            <label class="form-label" for="stateName">State</label>
+                                            <input type="text" class="form-control" name="stateName" id="stateName" value = "">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-1">
+                                            <label class="form-label" for="zipCode">ZIP</label>
+                                            <input type="text" class="form-control" name="zipCode" id="zipCode" value = "">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-1 me-1">Add</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+                                        <a type="reset" class="btn btn-outline-danger mt-1" href="<%= generateUrl("admin.user.listing") %>">Back</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>

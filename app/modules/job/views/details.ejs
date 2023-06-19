@@ -1,0 +1,95 @@
+<% layout(layout_directory+'/mainLayout') -%>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0"><%= page_title %></h2>
+                        <!-- <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="<%= generateUrl('job.list') %>">Service Request</a>
+                                </li>
+                                <li class="breadcrumb-item active"> <%= page_title %>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header border-bottom">
+                            <h4 class="card-title"></h4>
+                        </div> -->
+                        <div class="card-body py-2">
+                            <!-- form -->
+                            <form>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="full_name">User Name</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.user.full_name %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="email">User Email</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.user.email %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="categoryName">Category Name</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.category.categoryName %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="categoryType">Category Type</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.category.categoryType %>">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="title">Service Title</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.title %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="budget">Budget</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.budget %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="postDate">Posted On</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.postDate %>">
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="location">Location</label>
+                                        <input type="text" class="form-control"  readonly value = "<%= response.location %>">
+                                    </div>
+                                    <div class="col-12 col-sm-12 mb-1">
+                                        <label class="form-label" for="description">Description</label>
+                                        <textarea class="form-control"  readonly > <%= response.description %> </textarea>
+                                    </div>
+
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .ql-editor {
+        height: 150px;
+    }
+</style>
